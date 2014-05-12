@@ -74,10 +74,6 @@ func withOutIn(c *cli.Context, f func(out io.Writer, in io.Reader)) {
 	}
 	defer out.Close()
 
-	if !c.IsSet(srcFlag) && !c.IsSet(dstFlag) {
-		fmt.Fprintln(os.Stderr, "reading from stdin, writing to stdout")
-	}
-
 	f(out, in)
 }
 
